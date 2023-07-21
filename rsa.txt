@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+
+unsigned int mult(unsigned int x, unsigned int y, unsigned int n) {
+    unsigned int k = 1;
+    while (y > 0) {
+        if (y % 2 == 1)
+            k = (k * x) % n;
+        y /= 2;
+        x = (x * x) % n;
+    }
+    return k;
+}
+
+int main() {
+    char msg[100];
+    unsigned int pt[100], ct[100], n, d, e, p, q, i;
+    printf("Enter message: ");
+    fgets(msg, sizeof(msg), stdin);
+
+    // Remove the newline character from the input string
+    msg[strcspn(msg, "\n")] = '\0';
+
+    for (i = 0; i < strlen(msg); i++)
+        pt[i] = msg[i];
+
+    // For security reasons, n should be a product of two large prime numbers
+    n = 253; // Replace this with a larger value
+
+    // Normally, e and d should be generated using a key generation algorithm
+    e = 13; // Public exponent
+    d = 17; // Private exponent
+
+    printf("\nct: ");
+    for (i = 0; i < strlen(msg); i++)
+        ct[i] = mult(pt[i], e, n);
+
+    for (i = 0; i < strlen(msg); i++)
+        printf("%d ", ct[i]);
+
+    printf("\npt: ");
+    for (i = 0; i < strlen(msg); i++) {
+        pt[i] = mult(ct[i], d, n);
+        printf("%c", pt[i]);
+    }
+
+    printf("\n");
+    return 0;
+}
