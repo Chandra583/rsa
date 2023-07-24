@@ -7,7 +7,7 @@ unsigned int mult(unsigned int x, unsigned int y, unsigned int n) {
         if (y % 2 == 1)
             k = (k * x) % n;
         y /= 2;
-        x = (x * x) % n;
+        x = (x *x)%n;
     }
     return k;
 }
