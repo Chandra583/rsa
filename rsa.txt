@@ -19,7 +19,7 @@ int main() {
     fgets(msg, sizeof(msg), stdin);
 
     // Remove the newline character from the input string
-    msg[strcspn(msg, "\n")] = '\0';
+    msg[strcspn(msg, "\n")] = '\0';//this is not neccessary to write
 
     for (i = 0; i < strlen(msg); i++)
         pt[i] = msg[i];
