@@ -41,7 +41,7 @@ int main() {
     printf("\npt: ");
     for (i = 0; i < strlen(msg); i++) {
         pt[i] = mult(ct[i], d, n);
-        printf("%c", pt[i]);
+        printf("%c", pt[i]);   //jjjgjgjg
     }
 
     printf("\n");
